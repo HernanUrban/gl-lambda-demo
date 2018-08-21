@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Test Lambda with spring boot.
+Globals:
+  Function:
+    Environment:
+      Variables:
+        TABLE_NAME:
+          Ref: Table
+    Runtime: java8
+Outputs:
+  GLSpringBootApi:
+    Description: URL for lambda application demo
+    Export:
+      Name: GLSpringBootApi
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Stage/user
+Resources:
+  GLSpringBootFunction:
+    Properties:
+      CodeUri: s3://gl-spring-boot-lambda-0817/c5d5cbcf24f44a3485fb2551096b03e1
+      Events:
+        GetResource:
+          Properties:
+            Method: any
+            Path: /{proxy+}
+          Type: Api
+      Handler: com.globallogic.gllambdademo.LambdaHandler::handleRequest
+      MemorySize: 1512
+      Policies: AmazonDynamoDBFullAccess
+      Runtime: java8
+      Timeout: 120
+    Type: AWS::Serverless::Function
+  Table:
+    Properties:
+      PrimaryKey:
+        Name: id
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: Speaker
+    Type: AWS::Serverless::SimpleTable
+Transform: AWS::Serverless-2016-10-31

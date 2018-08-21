@@ -1,0 +1,13 @@
+com\globallogic\gllambdademo\config\Config$1.class
+com\globallogic\gllambdademo\converter\SpeakerConverter.class
+com\globallogic\gllambdademo\dao\DynamoDBSpeakerDAO.class
+com\globallogic\gllambdademo\dao\SpeakerDAO.class
+com\globallogic\gllambdademo\dbmanager\DynamoDBManager.class
+com\globallogic\gllambdademo\converter\UserConverter.class
+com\globallogic\gllambdademo\GlLambdaDemoApplication.class
+com\globallogic\gllambdademo\controller\UserController.class
+com\globallogic\gllambdademo\dao\Speaker.class
+com\globallogic\gllambdademo\dto\User.class
+com\globallogic\gllambdademo\LambdaHandler.class
+com\globallogic\gllambdademo\config\Config.class
+com\globallogic\gllambdademo\service\SpeakerService.class

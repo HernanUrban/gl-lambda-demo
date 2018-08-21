@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Test Lambda with spring boot.
+
+Resources:
+  LambdaSpringBootFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.globallogic.gllambdademo.LambdaHandler::handleRequest
+      Runtime: java8
+      CodeUri: target/gl-lambda-demo-0.0.1-SNAPSHOT.jar
+      MemorySize: 1512
+      Policies: AWSLambdaBasicExecutionRole
+      Timeout: 120
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: any
+
+Outputs:
+  LambdaSpringBootApi:
+    Description: URL for lambda application
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Stage/user'
+    Export:
+      Name: GLLambdaSpringBootApi
