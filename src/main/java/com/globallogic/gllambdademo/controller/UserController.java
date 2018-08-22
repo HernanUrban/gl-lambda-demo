@@ -29,12 +29,7 @@ public class UserController {
         if (users != null && !users.isEmpty()) {
          return new ResponseEntity<>(users, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new ArrayList<User>(Arrays.asList(
-                    new User()
-                            .setEmail("hernan.urban@globallogic.com")
-                            .setName("Hernan"),
-                    new User().setEmail("facundo.munoz@globallogic.com")
-                            .setName("Facundo"))), HttpStatus.OK);
+            return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
         }
     }
 
