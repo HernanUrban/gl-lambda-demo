@@ -1,0 +1,8 @@
+#logging.level.root=OFF
+cloud:
+  aws:
+    credentials:
+      instanceProfile: false
+    region:
+      auto: false
+      static: us-east-1

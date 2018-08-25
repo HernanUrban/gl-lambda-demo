@@ -1,16 +1,27 @@
-# Eclipse
-.classpath
-.project
-.settings/
-
-# Intellij
-.idea/
+logs
+*.class
+*.settings
+# Mobile Tools for Java (J2ME)
+.mtj.tmp
+build
+bin
+*.idea
 *.iml
-*.iws
+*.classpath
+*.project
+*.settings/org.eclipse.jdt.core.prefs
+target
+*RemoteSystemsTempFiles
+*.metadata
+*.recommenders
+*.bin
+*.lock
+.mvn
+maven-wrapper.properties
+mvnw
+mvnw.cmd
 
-# Mac
-.DS_Store
-
-# Maven
-/log/
-/target/
+# Package Files #
+*.jar
+*.war
+*.ear
