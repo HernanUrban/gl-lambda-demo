@@ -1,16 +1,16 @@
 package com.globallogic.gllambdademo.converter;
 
 import com.globallogic.gllambdademo.dao.Speaker;
-import com.globallogic.gllambdademo.dto.User;
+import com.globallogic.gllambdademo.dto.SpeakerDTO;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SpeakerConverter implements Converter<Speaker, User> {
+public class SpeakerConverter implements Converter<Speaker, SpeakerDTO> {
 
     @Override
-    public User convert(Speaker speaker) {
-        return new User().setEmail(speaker.getEmail())
+    public SpeakerDTO convert(Speaker speaker) {
+        return new SpeakerDTO().setEmail(speaker.getEmail())
                 .setName(speaker.getName());
     }
 }

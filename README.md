@@ -33,7 +33,7 @@ set your aws credentials
 Cold Start: first invocation of a Lambda function must start the Java Virtual Machine and Spring Boot.  
 Lambda warm: Subsequent executions, take less than 200 milliseconds for approximately five minutes.  
 You must keep these numbers in mind and decide if your application can afford the cold start times.  
-Cold start times may make Spring Boot a less than ideal choice for a Lambda accessed via API Gateway. It's certainly worth noting that it can be ideal for processing events triggered by S3 buckets, SNS, Kinesis Streams, and DynamoDB. In these scenarios, the cold start time of a few seconds is insignificant given that it isn't visible to a user.  
+Cold start times may make Spring Boot a less than ideal choice for a Lambda accessed via API Gateway. It's certainly worth noting that it can be ideal for processing events triggered by S3 buckets, SNS, Kinesis Streams, and DynamoDB. In these scenarios, the cold start time of a few seconds is insignificant given that it isn't visible to a speakerDTO.
 
 
 

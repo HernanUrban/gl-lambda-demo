@@ -39,6 +39,6 @@ Resources:
 Outputs:
   GLSpringBootApi:
     Description: URL for lambda application demo
-    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Stage/user'
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Stage/speaker'
     Export:
       Name: GLSpringBootApi

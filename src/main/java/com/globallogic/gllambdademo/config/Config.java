@@ -1,5 +1,7 @@
 package com.globallogic.gllambdademo.config;
 
+import com.amazonaws.xray.javax.servlet.AWSXRayServletFilter;
+import com.amazonaws.xray.strategy.DynamicSegmentNamingStrategy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
+import javax.servlet.Filter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -53,5 +56,9 @@ public class Config {
         };
     }
 
+    @Bean
+    public Filter TracingFilter() {
+        return new AWSXRayServletFilter(new DynamicSegmentNamingStrategy("GlLambdaDemoApplication", "*.com"));
+    }
 
 }

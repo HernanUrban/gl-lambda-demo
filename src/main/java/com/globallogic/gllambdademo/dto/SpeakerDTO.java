@@ -1,6 +1,6 @@
 package com.globallogic.gllambdademo.dto;
 
-public class User {
+public class SpeakerDTO {
 
     private String name;
     private String email;
@@ -9,7 +9,7 @@ public class User {
         return name;
     }
 
-    public User setName(String name) {
+    public SpeakerDTO setName(String name) {
         this.name = name;
         return this;
     }
@@ -18,7 +18,7 @@ public class User {
         return email;
     }
 
-    public User setEmail(String email) {
+    public SpeakerDTO setEmail(String email) {
         this.email = email;
         return this;
     }

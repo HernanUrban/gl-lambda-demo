@@ -1,10 +1,10 @@
 package com.globallogic.gllambdademo.service;
 
 import com.globallogic.gllambdademo.converter.SpeakerConverter;
-import com.globallogic.gllambdademo.converter.UserConverter;
+import com.globallogic.gllambdademo.converter.SpeakerDTOConverter;
 import com.globallogic.gllambdademo.dao.DynamoDBSpeakerDAO;
 import com.globallogic.gllambdademo.dao.Speaker;
-import com.globallogic.gllambdademo.dto.User;
+import com.globallogic.gllambdademo.dto.SpeakerDTO;
 import com.globallogic.gllambdademo.message.NotificationMessage;
 import com.globallogic.gllambdademo.message.NotificationType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,18 +28,18 @@ public class SpeakerService {
     SpeakerConverter converter;
 
     @Autowired
-    UserConverter userConverter;
+    SpeakerDTOConverter speakerDTOConverter;
 
     @Autowired
     private NotificationMessagingTemplate notificationMessagingTemplate;
 
-    public User create(User user){
-        Speaker speaker = speakerDao.create(userConverter.convert(user));
-        sendMessage(user);
+    public SpeakerDTO create(SpeakerDTO speakerDTO){
+        Speaker speaker = speakerDao.create(speakerDTOConverter.convert(speakerDTO));
+        sendMessage(speakerDTO);
         return converter.convert(speaker);
     }
 
-    public List<User> findAll(){
+    public List<SpeakerDTO> findAll(){
         List<Speaker> users = speakerDao.getAll();
         if (!isNull(users)) {
             return users.stream().map(s -> converter.convert(s)).collect(Collectors.toList());
@@ -49,9 +49,9 @@ public class SpeakerService {
 
 
 
-    private void sendMessage(User user){
+    private void sendMessage(SpeakerDTO speakerDTO){
         try {
-            notificationMessagingTemplate.convertAndSend("SNSGLTopic-1808", createMessage(user.getEmail(), user.getName()));
+            notificationMessagingTemplate.convertAndSend("SNSGLTopic-1808", createMessage(speakerDTO.getEmail(), speakerDTO.getName()));
         } catch (Exception e) {
             System.out.println("Unable to send message: " + e.getMessage());
         }
